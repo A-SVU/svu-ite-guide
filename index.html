@@ -61,40 +61,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .header-links {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            color: #fff;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .social-btn.telegram {
-            background-color: var(--telegram-color);
-            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
-        }
-
-        .social-btn.whatsapp-channel {
-            background-color: var(--whatsapp-color);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
         /* شريط البحث */
         .search-container {
             max-width: 600px;
@@ -116,6 +82,106 @@
 
         .search-input:focus {
             border-color: var(--accent-blue);
+        }
+
+        /* قسم الروابط الرئيسية البارزة */
+        .hero-links-section {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem auto 2rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-links-title {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .hero-links-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-links-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .hero-link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-link-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-card-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .hero-btn {
+            width: 100%;
+            padding: 0.65rem 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            transition: filter 0.2s, transform 0.2s;
+        }
+
+        .hero-btn:hover {
+            filter: brightness(1.15);
+        }
+
+        .hero-btn.telegram {
+            background-color: var(--telegram-color);
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.25);
+        }
+
+        .hero-btn.wa-main {
+            background-color: #128c7e;
+            box-shadow: 0 4px 12px rgba(18, 140, 126, 0.25);
+        }
+
+        .hero-btn.wa-news {
+            background-color: var(--whatsapp-color);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
         }
 
         /* 2. تبويبات السنوات (Year Tabs) */
@@ -380,20 +446,62 @@
         <h1 class="header-title">دليل مواد الهندسة المعلوماتية - ITE SVU</h1>
         <p class="header-subtitle">الجامعة الافتراضية السورية — المصادر، المتطلبات المسبقة ومجموعات التواصل</p>
         
-        <div class="header-links">
-            <a href="https://t.me/+Dv_LH2j6kqQwMDRk" target="_blank" class="social-btn telegram">
-                <span>📢 قناة التلغرام وبنك الأسئلة</span>
-            </a>
-            <a href="https://chat.whatsapp.com/GKjDE1xOY948lsFJdD41gZ" target="_blank" class="social-btn whatsapp-channel">
-                <span>💬 كروب التحديثات والقرارات العاجلة</span>
-            </a>
-        </div>
-
         <!-- شريط البحث السريع -->
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن اسم مادة أو ترميزها (مثال: BPG401)...">
         </div>
     </header>
+
+    <div class="main-container">
+
+        <!-- قسم الروابط والمجتمعات البارزة الثلاثة -->
+        <div class="hero-links-section">
+            <div class="hero-links-title">
+                🌐 المجتمعات والقنوات الرسمية للهندسة المعلوماتية
+            </div>
+            
+            <div class="hero-links-grid">
+                
+                <!-- 1. قناة التلغرام وبنك الأسئلة -->
+                <div class="hero-link-card">
+                    <div>
+                        <div class="hero-card-icon">📢</div>
+                        <div class="hero-card-title">قناة التلغرام وبنك الأسئلة</div>
+                        <div class="hero-card-desc">الملفات، الملخصات، وبنك الأسئلة الامتحانية الشاملة لكافة المواد</div>
+                    </div>
+                    <a href="https://t.me/+Dv_LH2j6kqQwMDRk" target="_blank" class="hero-btn telegram">
+                        الانضمام للتلغرام ↵
+                    </a>
+                </div>
+
+                <!-- 2. الكروب العام المباشر -->
+                <div class="hero-link-card">
+                    <div>
+                        <div class="hero-card-icon">👥</div>
+                        <div class="hero-card-title">الكروب العام لطلاب ITE</div>
+                        <div class="hero-card-desc">مجتمع النقاشات العامة، الاستفسارات، وتبادل الخبرات بين جميع السنوات</div>
+                    </div>
+                    <a href="https://chat.whatsapp.com/E1iSQnO0eWD3QMneMd51F5?mode=gi_t" target="_blank" class="hero-btn wa-main">
+                        الانضمام للكروب العام ↵
+                    </a>
+                </div>
+
+                <!-- 3. قناة التحديثات والقرارات -->
+                <div class="hero-link-card">
+                    <div>
+                        <div class="hero-card-icon">💬</div>
+                        <div class="hero-card-title">كروب التحديثات والقرارات</div>
+                        <div class="hero-card-desc">متابعة الأخبار العاجلة، إعلانات الجامعة، ومواعيد الامتحانات والتسجيل</div>
+                    </div>
+                    <a href="https://chat.whatsapp.com/GKjDE1xOY948lsFJdD41gZ" target="_blank" class="hero-btn wa-news">
+                        متابعة التحديثات ↵
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
     <!-- 2. أزرار التنقل بين السنوات -->
     <div class="tabs-wrapper">
@@ -806,7 +914,6 @@
 
     <!-- البرمجة التفاعلية (JavaScript) -->
     <script>
-        // التبديل بين السنوات
         function switchYear(yearNum) {
             const tabs = document.querySelectorAll('.tabs-container .tab-btn');
             tabs.forEach((tab, index) => {
@@ -826,7 +933,6 @@
             }
         }
 
-        // التبديل بين الفصول
         function switchSemester(btn, semId) {
             const parentYear = btn.closest('.year-content');
             
@@ -843,7 +949,6 @@
             }
         }
 
-        // البحث السريع المباشر عن المواد
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.course-card');
