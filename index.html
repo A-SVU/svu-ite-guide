@@ -411,7 +411,6 @@
         <!-- ==================== السنة الأولى ==================== -->
         <div id="year-1" class="year-content active">
             
-            <!-- أزرار اختيار الفصل للسنة الأولى -->
             <div class="semester-tabs-container">
                 <button class="sem-btn active" onclick="switchSemester(this, 'sem-1-1')">📘 الفصل الأول</button>
                 <button class="sem-btn" onclick="switchSemester(this, 'sem-1-2')">📙 الفصل الثاني</button>
@@ -777,238 +776,89 @@
 
         <!-- ==================== السنة الثالثة ==================== -->
         <div id="year-3" class="year-content">
-            
-            <div class="semester-tabs-container">
-                <button class="sem-btn active" onclick="switchSemester(this, 'sem-3-1')">📘 الفصل الأول</button>
-                <button class="sem-btn" onclick="switchSemester(this, 'sem-3-2')">📙 الفصل الثاني</button>
+            <div class="empty-year">
+                <h3>⏳ قريباً جداً</h3>
+                <p>جاري إضافة وإعداد روابط المواد الخاصة بالسنة الثالثة...</p>
             </div>
-
-            <div id="sem-3-1" class="semester-content active">
-                <div class="grid-cards">
-                    <div class="course-card" data-name="المحاسبة GAC501">
-                        <div class="course-header">
-                            <div class="course-name">المحاسبة</div>
-                            <span class="course-code">GAC501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 5 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: أساسيات الإدارة GMN401</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="الاحتمالات والإحصاء BPS601">
-                        <div class="course-header">
-                            <div class="course-name">الاحتمالات والإحصاء</div>
-                            <span class="course-code">BPS601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: BMA402 + BDM501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="نظم التشغيل 1 BOS501">
-                        <div class="course-header">
-                            <div class="course-name">نظم التشغيل 1</div>
-                            <span class="course-code">BOS501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 4 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: BCA501 + BPG402</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="مخبر نظم التشغيل 1 BOSL501">
-                        <div class="course-header">
-                            <div class="course-name">مخبر نظم التشغيل 1</div>
-                            <span class="course-code">BOSL501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 4 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: على التوازي مع BOS501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="أوتومات ولغات صورية BAU501">
-                        <div class="course-header">
-                            <div class="course-name">أوتومات ولغات صورية</div>
-                            <span class="course-code">BAU501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 5 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: BDA501 + BDM501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="برمجة 3 BPG601">
-                        <div class="course-header">
-                            <div class="course-name">برمجة 3</div>
-                            <span class="course-code">BPG601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 5 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: برمجة 2 BPG402</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="اللغة الإنكليزية 5 GEN601">
-                        <div class="course-header">
-                            <div class="course-name">اللغة الإنكليزية 5</div>
-                            <span class="course-code">GEN601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 3 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: اللغة الإنكليزية 4 GEN502</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="sem-3-2" class="semester-content">
-                <div class="grid-cards">
-                    <div class="course-card" data-name="الذكاء الصنعي BAI501">
-                        <div class="course-header">
-                            <div class="course-name">الذكاء الصنعي</div>
-                            <span class="course-code">BAI501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: بنى المعطيات 1 BDA501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="الشبكات الحاسوبية 1 BNT501">
-                        <div class="course-header">
-                            <div class="course-name">الشبكات الحاسوبية 1</div>
-                            <span class="course-code">BNT501</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: نظم الاتصالات BT5501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="هندسة البرمجيات 1 BSE601">
-                        <div class="course-header">
-                            <div class="course-name">هندسة البرمجيات 1</div>
-                            <span class="course-code">BSE601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: برمجة 3 BPG601</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="المترجمات BCM601">
-                        <div class="course-header">
-                            <div class="course-name">المترجمات</div>
-                            <span class="course-code">BCM601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: أوتومات ولغات صورية BAU501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-
-                    <div class="course-card" data-name="البيانيات BCG601">
-                        <div class="course-header">
-                            <div class="course-name">البيانيات</div>
-                            <span class="course-code">BCG601</span>
-                        </div>
-                        <div class="badges-container">
-                            <span class="badge badge-hours">⏱️ 6 ساعات</span>
-                            <span class="badge badge-prereq">🔗 الأسبقية: BSP501 + BDA501</span>
-                        </div>
-                        <button class="btn-wa disabled" disabled>⏳ قريباً</button>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <!-- ==================== السنة الرابعة ==================== -->
         <div id="year-4" class="year-content">
             <div class="empty-year">
-                <h3>🚀 المواد والمجموعات قيد التجهيز</h3>
-                <p>سيتم إضافة خطة السنة الرابعة فور تفعيل مجموعاتها.</p>
+                <h3>⏳ قريباً جداً</h3>
+                <p>جاري إضافة وإعداد روابط المواد الخاصة بالسنة الرابعة...</p>
             </div>
         </div>
 
         <!-- ==================== السنة الخامسة ==================== -->
         <div id="year-5" class="year-content">
             <div class="empty-year">
-                <h3>🎓 مشاريع التخرج ومواد السنة الخامسة</h3>
-                <p>سيتم إضافة التفاصيل والمجموعات قريباً.</p>
+                <h3>⏳ قريباً جداً</h3>
+                <p>جاري إضافة وإعداد روابط المواد الخاصة بالسنة الخامسة مشروار التخرج...</p>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>© 2026 دليل الهندسة المعلوماتية SVU — عالم الافتراضية</p>
+        <p>© 2026 دليل مواد الهندسة المعلوماتية - ITE SVU | جميع الحقوق محفوظة</p>
     </footer>
 
+    <!-- البرمجة التفاعلية (JavaScript) -->
     <script>
         // التبديل بين السنوات
         function switchYear(yearNum) {
+            const tabs = document.querySelectorAll('.tabs-container .tab-btn');
+            tabs.forEach((tab, index) => {
+                if (index + 1 === yearNum) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
             const years = document.querySelectorAll('.year-content');
-            years.forEach(y => y.classList.remove('active'));
+            years.forEach((year) => year.classList.remove('active'));
 
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(t => t.classList.remove('active'));
-
-            document.getElementById(`year-${yearNum}`).classList.add('active');
-            tabs[yearNum - 1].classList.add('active');
-
-            document.getElementById('searchInput').value = '';
-            filterCourses('');
+            const activeYear = document.getElementById(`year-${yearNum}`);
+            if (activeYear) {
+                activeYear.classList.add('active');
+            }
         }
 
-        // التبديل بين الفصول الدراسية
-        function switchSemester(btnElement, targetSemId) {
-            const currentYear = btnElement.closest('.year-content');
-
-            // إزالة التفعيل من أزرار الفصول الحالية
-            const semBtns = currentYear.querySelectorAll('.sem-btn');
+        // التبديل بين الفصول
+        function switchSemester(btn, semId) {
+            const parentYear = btn.closest('.year-content');
+            
+            const semBtns = parentYear.querySelectorAll('.sem-btn');
             semBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-            // إخفاء فصول السنة الحالية
-            const semContents = currentYear.querySelectorAll('.semester-content');
+            const semContents = parentYear.querySelectorAll('.semester-content');
             semContents.forEach(c => c.classList.remove('active'));
 
-            // تفعيل الفصل المحدد
-            btnElement.classList.add('active');
-            document.getElementById(targetSemId).classList.add('active');
+            const targetSem = document.getElementById(semId);
+            if (targetSem) {
+                targetSem.classList.add('active');
+            }
         }
 
-        // البحث الفوري عن المادة
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', function(e) {
-            filterCourses(e.target.value.toLowerCase().trim());
-        });
-
-        function filterCourses(query) {
+        // البحث السريع المباشر عن المواد
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.course-card');
+
             cards.forEach(card => {
-                const courseData = card.getAttribute('data-name').toLowerCase();
-                if (courseData.includes(query)) {
+                const courseData = card.getAttribute('data-name') ? card.getAttribute('data-name').toLowerCase() : '';
+                const courseText = card.innerText.toLowerCase();
+
+                if (courseData.includes(searchTerm) || courseText.includes(searchTerm)) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
                 }
             });
-        }
+        });
     </script>
 </body>
 </html>
