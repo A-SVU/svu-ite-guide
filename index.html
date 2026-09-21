@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دليل مواد الهندسة المعلوماتية - ITE SVU</title>
-  <!-- خط القاهرة وأيقونات FontAwesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>دليل مواد الهندسة المعلوماتية | ITE — SVU</title>
+  <!-- خط تجوال الحديث -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <!-- مكتبة الأيقونات FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  
   <style>
     :root {
       --bg-color: #080c14;
-      --card-bg: #101726;
+      --card-bg: #0f172a;
       --card-border: #1e293b;
-      --primary-blue: #2563eb;
-      --accent-green: #059669;
+      --accent-blue: #2563eb;
+      --accent-blue-glow: rgba(37, 99, 235, 0.4);
       --text-main: #ffffff;
       --text-muted: #94a3b8;
+      --whatsapp-color: #059669;
+      --telegram-color: #0284c7;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Tajawal', sans-serif;
     }
 
     body {
@@ -31,392 +34,479 @@
       color: var(--text-main);
       display: flex;
       justify-content: center;
-      padding: 25px 15px;
+      padding: 20px 12px;
       min-height: 100vh;
     }
 
     .container {
       width: 100%;
-      max-width: 440px;
+      max-width: 480px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 18px;
     }
 
     /* الشعار العلوي */
     .logo-box {
-      width: 80px;
-      height: 80px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #4f46e5, #ea580c);
+      width: 75px;
+      height: 75px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ea580c, #9333ea, #2563eb);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45);
-      margin-bottom: 18px;
+      box-shadow: 0 0 25px rgba(37, 99, 235, 0.35);
+      margin-top: 10px;
     }
+
     .logo-box i {
-      font-size: 38px;
+      font-size: 36px;
       color: #ffffff;
     }
 
     /* العناوين */
-    h1 {
-      font-size: 24px;
-      font-weight: 800;
+    .header-titles {
       text-align: center;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-    .subtitle {
-      color: var(--text-muted);
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 22px;
-      letter-spacing: 0.5px;
     }
 
-    /* القنوات الرئيسية */
-    .channel-btn {
+    .header-titles h1 {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .header-titles p {
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    /* الروابط السريعة */
+    .quick-links {
       width: 100%;
-      padding: 14px 18px;
-      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-link {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 12px;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .channel-btn:hover {
-      transform: translateY(-2px);
-    }
-    .telegram-btn {
-      background: #0a192f;
-      border: 1px solid #1d4ed8;
-      color: #60a5fa;
-    }
-    .whatsapp-btn {
-      background: #06201b;
-      border: 1px solid #059669;
-      color: #34d399;
+      transition: all 0.2s ease;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
     }
 
-    /* شريط السنين */
-    .years-scroll {
-      display: flex;
-      gap: 8px;
+    .btn-telegram {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-whatsapp-channel {
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .btn-link:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.2);
+    }
+
+    /* أزرار السنوات */
+    .years-nav {
       width: 100%;
+      display: flex;
+      gap: 6px;
       overflow-x: auto;
-      padding: 10px 0 18px 0;
-      scrollbar-width: none;
+      padding-bottom: 4px;
     }
-    .years-scroll::-webkit-scrollbar {
-      display: none;
-    }
-    .year-btn {
-      background: #111827;
-      border: 1px solid #1f2937;
-      color: #9ca3af;
-      padding: 10px 16px;
+
+    .year-tab {
+      flex: 1;
+      min-width: 70px;
+      padding: 10px 6px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
+      color: var(--text-muted);
       font-weight: 700;
       font-size: 13px;
-      white-space: nowrap;
       cursor: pointer;
-      transition: all 0.3s;
-    }
-    .year-btn.active {
-      background: var(--primary-blue);
-      color: #ffffff;
-      border-color: #3b82f6;
-      box-shadow: 0 0 18px rgba(37, 99, 235, 0.6);
+      text-align: center;
+      transition: all 0.3s ease;
     }
 
-    /* تبويب الفصول (الأول / الثاني) */
-    .semester-tabs {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-      background: #0d1322;
-      padding: 6px;
-      border-radius: 14px;
-      border: 1px solid #1e293b;
-      margin-bottom: 20px;
+    .year-tab.active {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 15px var(--accent-blue-glow);
     }
-    .tab-btn {
+
+    /* أزرار التبديل بين الفصول */
+    .semester-switcher {
+      width: 100%;
+      display: flex;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 4px;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      gap: 6px;
+    }
+
+    .sem-tab {
       flex: 1;
       padding: 10px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      color: var(--text-muted);
-      background: transparent;
       border: none;
-      transition: all 0.3s;
-    }
-    .tab-btn.active {
-      background: #1e293b;
-      color: #38bdf8;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    /* محتوى الفصول */
-    .semester-content {
-      display: none;
-      width: 100%;
-    }
-    .semester-content.active {
-      display: block;
-    }
-
-    .section-header {
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .color-bar {
-      width: 8px;
-      height: 22px;
-      background: linear-gradient(180deg, #22c55e, #f59e0b);
-      border-radius: 4px;
-    }
-    .section-header h2 {
-      font-size: 18px;
-      font-weight: 800;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
     }
 
-    /* كرت المادة */
-    .course-card {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 14px;
+    .sem-tab.active {
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
-    .card-top {
+
+    /* عنوان الفصل الحالي */
+    .section-title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .section-title span.indicator {
+      width: 6px;
+      height: 22px;
+      background: #f97316;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .section-title span.indicator-green {
+      background: #10b981;
+    }
+
+    /* قائمة المواد */
+    .subjects-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .subject-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 14px;
     }
-    .course-title {
-      font-size: 17px;
+
+    .subject-info h3 {
+      font-size: 18px;
       font-weight: 800;
+      margin-bottom: 2px;
     }
-    .course-code {
-      color: #6b7280;
+
+    .subject-info .code {
+      color: var(--text-muted);
       font-size: 13px;
       font-weight: 700;
-      margin-top: 3px;
     }
-    .course-icon-bg {
-      width: 44px;
-      height: 44px;
-      background: #1f2937;
+
+    .subject-icon {
+      width: 48px;
+      height: 48px;
+      background: #1e293b;
+      border: 1px solid #334155;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #9ca3af;
-      font-size: 18px;
+      color: #94a3b8;
+      font-size: 20px;
     }
 
-    .badges-row {
+    /* الشارات (Badges) */
+    .card-badges {
       display: flex;
       gap: 8px;
-      margin-bottom: 14px;
     }
+
     .badge {
-      background: #0b0f19;
-      border: 1px solid #1f2937;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 6px 12px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 700;
-      color: #9ca3af;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .group-link {
+    .badge-hours {
+      background: rgba(37, 99, 235, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .badge-prereq {
+      background: rgba(249, 115, 22, 0.15);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+
+    /* زر واتساب داخل الكارت */
+    .btn-whatsapp-group {
       width: 100%;
       padding: 10px;
-      background: rgba(5, 150, 105, 0.1);
-      border: 1px solid #059669;
-      color: #34d399;
       border-radius: 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 13px;
-      transition: background 0.2s;
+      transition: all 0.2s ease;
     }
-    .group-link:hover {
-      background: rgba(5, 150, 105, 0.25);
+
+    .btn-whatsapp-group:hover {
+      background: rgba(16, 185, 129, 0.2);
+    }
+
+    /* إخفاء الأقسام غير المحددة */
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
+    
     <!-- الشعار -->
     <div class="logo-box">
       <i class="fa-solid fa-graduation-cap"></i>
     </div>
 
-    <!-- العناوين الرئيسية -->
-    <h1>دليل مواد الهندسة المعلوماتية</h1>
-    <div class="subtitle">ITE — SVU</div>
-
-    <!-- روابط القنوات -->
-    <a href="#" class="channel-btn telegram-btn">
-      <span>قناة التلغرام الرسمية / بنك الأسئلة</span>
-      <i class="fa-regular fa-paper-plane"></i>
-    </a>
-
-    <a href="#" class="channel-btn whatsapp-btn">
-      <span>قناة التحديثات على واتساب</span>
-      <i class="fa-regular fa-comment-dots"></i>
-    </a>
-
-    <!-- اختيار السنة -->
-    <div class="years-scroll">
-      <button class="year-btn active">السنة الأولى</button>
-      <button class="year-btn">السنة الثانية</button>
-      <button class="year-btn">السنة الثالثة</button>
-      <button class="year-btn">السنة الرابعة</button>
-      <button class="year-btn">السنة الخامسة</button>
+    <!-- العنوان -->
+    <div class="header-titles">
+      <h1>دليل مواد الهندسة المعلوماتية</h1>
+      <p>ITE — SVU</p>
     </div>
 
-    <!-- أزرار التبديل بين الفصول -->
-    <div class="semester-tabs">
-      <button class="tab-btn active" onclick="switchSemester('sem1', this)">الفصل الأول</button>
-      <button class="tab-btn" onclick="switchSemester('sem2', this)">الفصل الثاني</button>
+    <!-- الروابط السريعة -->
+    <div class="quick-links">
+      <a href="#" class="btn-link btn-telegram">
+        <span>قناة التلغرام الرسمية / بنك الأسئلة</span>
+        <i class="fa-solid fa-paper-plane"></i>
+      </a>
+      <a href="#" class="btn-link btn-whatsapp-channel">
+        <span>قناة التحديثات على واتساب</span>
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
     </div>
 
-    <!-- ================= محتوى الفصل الأول ================= -->
-    <div id="sem1" class="semester-content active">
-      <div class="section-header">
-        <div class="color-bar"></div>
-        <h2>الفصل الأول</h2>
-      </div>
+    <!-- التبديل بين السنوات -->
+    <div class="years-nav">
+      <button class="year-tab active" onclick="selectYear(1, this)">السنة الأولى</button>
+      <button class="year-tab" onclick="selectYear(2, this)">السنة الثانية</button>
+      <button class="year-tab" onclick="selectYear(3, this)">السنة الثالثة</button>
+      <button class="year-tab" onclick="selectYear(4, this)">السنة الرابعة</button>
+      <button class="year-tab" onclick="selectYear(5, this)">السنة الخامسة</button>
+    </div>
 
+    <!-- التبديل بين الفصل الأول والتاني -->
+    <div class="semester-switcher">
+      <button class="sem-tab active" id="tab-sem1" onclick="switchSemester(1)">
+        📗 الفصل الأول
+      </button>
+      <button class="sem-tab" id="tab-sem2" onclick="switchSemester(2)">
+        📘 الفصل الثاني
+      </button>
+    </div>
+
+    <!-- عنوان الفصل المنشط -->
+    <div class="section-title">
+      <span class="indicator" id="sem-indicator"></span>
+      <span id="sem-title-text">الفصل الأول</span>
+    </div>
+
+    <!-- مواد الفصل الأول -->
+    <div class="subjects-list" id="semester-1-content">
+      
       <!-- مادة 1 -->
-      <div class="course-card">
-        <div class="card-top">
-          <div>
-            <div class="course-title">مهارات الحاسوب</div>
-            <div class="course-code">GCS301</div>
+      <div class="subject-card">
+        <div class="card-header">
+          <div class="subject-info">
+            <h3>مهارات الحاسوب</h3>
+            <span class="code">GCS301</span>
           </div>
-          <div class="course-icon-bg">
-            <i class="fa-regular fa-file-lines"></i>
+          <div class="subject-icon">
+            <i class="fa-solid fa-file-lines"></i>
           </div>
         </div>
-        <div class="badges-row">
-          <div class="badge"><i class="fa-regular fa-clock"></i> 4 ساعات</div>
-          <div class="badge"><i class="fa-solid fa-layer-group"></i> لا يوجد متطلب</div>
+        <div class="card-badges">
+          <span class="badge badge-hours"><i class="fa-regular fa-clock"></i> 4 ساعات</span>
+          <span class="badge badge-prereq"><i class="fa-solid fa-layer-group"></i> لا يوجد</span>
         </div>
-        <a href="#" class="group-link">
-          <i class="fa-regular fa-comment-dots"></i> مجموعة واتساب
+        <a href="https://chat.whatsapp.com/" target="_blank" class="btn-whatsapp-group">
+          <span>مجموعة واتساب</span>
+          <i class="fa-solid fa-chevron-left"></i>
         </a>
       </div>
 
       <!-- مادة 2 -->
-      <div class="course-card">
-        <div class="card-top">
-          <div>
-            <div class="course-title">التحليل الرياضي 1</div>
-            <div class="course-code">MATH101</div>
+      <div class="subject-card">
+        <div class="card-header">
+          <div class="subject-info">
+            <h3>التحليل الرياضي 1</h3>
+            <span class="code">MATH101</span>
           </div>
-          <div class="course-icon-bg">
+          <div class="subject-icon">
             <i class="fa-solid fa-calculator"></i>
           </div>
         </div>
-        <div class="badges-row">
-          <div class="badge"><i class="fa-regular fa-clock"></i> 5 ساعات</div>
-          <div class="badge"><i class="fa-solid fa-layer-group"></i> لا يوجد متطلب</div>
+        <div class="card-badges">
+          <span class="badge badge-hours"><i class="fa-regular fa-clock"></i> 5 ساعات</span>
+          <span class="badge badge-prereq"><i class="fa-solid fa-layer-group"></i> لا يوجد</span>
         </div>
-        <a href="#" class="group-link">
-          <i class="fa-regular fa-comment-dots"></i> مجموعة واتساب
+        <a href="https://chat.whatsapp.com/" target="_blank" class="btn-whatsapp-group">
+          <span>مجموعة واتساب</span>
+          <i class="fa-solid fa-chevron-left"></i>
         </a>
       </div>
+
     </div>
 
-    <!-- ================= محتوى الفصل الثاني ================= -->
-    <div id="sem2" class="semester-content">
-      <div class="section-header">
-        <div class="color-bar"></div>
-        <h2>الفصل الثاني</h2>
-      </div>
-
-      <!-- مادة 1 -->
-      <div class="course-card">
-        <div class="card-top">
-          <div>
-            <div class="course-title">البرمجة 1</div>
-            <div class="course-code">PRG101</div>
+    <!-- مواد الفصل الثاني -->
+    <div class="subjects-list hidden" id="semester-2-content">
+      
+      <!-- مادة 1 في الفصل الثاني -->
+      <div class="subject-card">
+        <div class="card-header">
+          <div class="subject-info">
+            <h3>البرمجة 1</h3>
+            <span class="code">PRG101</span>
           </div>
-          <div class="course-icon-bg">
+          <div class="subject-icon">
             <i class="fa-solid fa-code"></i>
           </div>
         </div>
-        <div class="badges-row">
-          <div class="badge"><i class="fa-regular fa-clock"></i> 5 ساعات</div>
-          <div class="badge"><i class="fa-solid fa-layer-group"></i> GCS301</div>
+        <div class="card-badges">
+          <span class="badge badge-hours"><i class="fa-regular fa-clock"></i> 5 ساعات</span>
+          <span class="badge badge-prereq"><i class="fa-solid fa-layer-group"></i> مهارات الحاسوب</span>
         </div>
-        <a href="#" class="group-link">
-          <i class="fa-regular fa-comment-dots"></i> مجموعة واتساب
+        <a href="https://chat.whatsapp.com/" target="_blank" class="btn-whatsapp-group">
+          <span>مجموعة واتساب</span>
+          <i class="fa-solid fa-chevron-left"></i>
         </a>
       </div>
 
-      <!-- مادة 2 -->
-      <div class="course-card">
-        <div class="card-top">
-          <div>
-            <div class="course-title">الفيزياء الحديثة</div>
-            <div class="course-code">PHYS101</div>
+      <!-- مادة 2 في الفصل الثاني -->
+      <div class="subject-card">
+        <div class="card-header">
+          <div class="subject-info">
+            <h3>الفيزياء الحديثة</h3>
+            <span class="code">PHYS102</span>
           </div>
-          <div class="course-icon-bg">
+          <div class="subject-icon">
             <i class="fa-solid fa-atom"></i>
           </div>
         </div>
-        <div class="badges-row">
-          <div class="badge"><i class="fa-regular fa-clock"></i> 4 ساعات</div>
-          <div class="badge"><i class="fa-solid fa-layer-group"></i> لا يوجد متطلب</div>
+        <div class="card-badges">
+          <span class="badge badge-hours"><i class="fa-regular fa-clock"></i> 4 ساعات</span>
+          <span class="badge badge-prereq"><i class="fa-solid fa-layer-group"></i> لا يوجد</span>
         </div>
-        <a href="#" class="group-link">
-          <i class="fa-regular fa-comment-dots"></i> مجموعة واتساب
+        <a href="https://chat.whatsapp.com/" target="_blank" class="btn-whatsapp-group">
+          <span>مجموعة واتساب</span>
+          <i class="fa-solid fa-chevron-left"></i>
         </a>
       </div>
+
     </div>
 
   </div>
 
-  <!-- سكربت التنقل بين الفصول -->
   <script>
-    function switchSemester(semId, btnElement) {
-      // إخفاء كل الفصول
-      const contents = document.querySelectorAll('.semester-content');
-      contents.forEach(content => content.classList.remove('active'));
+    // التبديل بين الفصل الأول والفصل الثاني
+    function switchSemester(semNumber) {
+      const sem1Content = document.getElementById('semester-1-content');
+      const sem2Content = document.getElementById('semester-2-content');
+      const tab1 = document.getElementById('tab-sem1');
+      const tab2 = document.getElementById('tab-sem2');
+      const titleText = document.getElementById('sem-title-text');
+      const indicator = document.getElementById('sem-indicator');
 
-      // إلغاء تحديد كل أزرار التبويب
-      const tabs = document.querySelectorAll('.tab-btn');
-      tabs.forEach(tab => tab.classList.remove('active'));
+      if (semNumber === 1) {
+        sem1Content.classList.remove('hidden');
+        sem2Content.classList.add('hidden');
+        
+        tab1.classList.add('active');
+        tab2.classList.remove('active');
+        
+        titleText.innerText = 'الفصل الأول';
+        indicator.classList.remove('indicator-green');
+      } else {
+        sem1Content.classList.add('hidden');
+        sem2Content.classList.remove('hidden');
+        
+        tab2.classList.add('active');
+        tab1.classList.remove('active');
+        
+        titleText.innerText = 'الفصل الثاني';
+        indicator.classList.add('indicator-green');
+      }
+    }
 
-      // تفعيل الفصل والزر المحدد
-      document.getElementById(semId).classList.add('active');
+    // التبديل بين السنوات
+    function selectYear(yearNum, btnElement) {
+      document.querySelectorAll('.year-tab').forEach(btn => btn.classList.remove('active'));
       btnElement.classList.add('active');
+      // يمكنك تخصيص المواد لكل سنة هنا لاحقاً
     }
   </script>
+
 </body>
 </html>
