@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل مواد الهندسة المعلوماتية - ITE SVU</title>
+    <!-- خط Cairo الجميل من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-blue-bg: rgba(59, 130, 246, 0.15);
+            --accent-orange: #f59e0b;
+            --accent-orange-bg: rgba(245, 158, 11, 0.15);
+            --whatsapp-color: #25d366;
+            --telegram-color: #0088cc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 3rem;
+        }
+
+        /* 1. الهيدر (Header) */
+        header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            border-bottom: 1px solid var(--card-border);
+            padding: 2.5rem 1rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-btn.telegram {
+            background-color: var(--telegram-color);
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+        }
+
+        .social-btn.whatsapp-channel {
+            background-color: var(--whatsapp-color);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        /* شريط البحث */
+        .search-container {
+            max-width: 600px;
+            margin: 1.5rem auto 0 auto;
+            padding: 0 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        /* 2. تبويبات السنوات (Year Tabs) */
+        .tabs-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 0.75rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            white-space: nowrap;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-blue);
+            color: #fff;
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* المحتوى الرئيسي */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .year-content {
+            display: none;
+        }
+
+        .year-content.active {
+            display: block;
+        }
+
+        /* 3. تقسيم الفصول (Semesters) */
+        .semester-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #60a5fa;
+            border-right: 4px solid var(--accent-blue);
+            padding-right: 0.75rem;
+        }
+
+        .semester-title:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 4. بطاقة المادة (Course Card) */
+        .course-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            border-color: #475569;
+        }
+
+        .course-header {
+            margin-bottom: 1rem;
+        }
+
+        .course-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .course-code {
+            font-size: 0.85rem;
+            color: #a78bfa;
+            font-weight: 600;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .badges-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .badge-hours {
+            background-color: var(--accent-blue-bg);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-prereq {
+            background-color: var(--accent-orange-bg);
+            color: #fcd34d;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* 5. حالة أزرار الواتساب */
+        .btn-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.65rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-wa.active {
+            background-color: var(--whatsapp-color);
+            color: #000;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25);
+            cursor: pointer;
+        }
+
+        .btn-wa.active:hover {
+            background-color: #20bd5a;
+        }
+
+        .btn-wa.disabled {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+        }
+
+        .empty-year {
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px dashed var(--card-border);
+            margin-top: 1rem;
+        }
+
+        .empty-year h3 {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. الهيدر -->
+    <header>
+        <h1 class="header-title">دليل مواد الهندسة المعلوماتية - ITE SVU</h1>
+        <p class="header-subtitle">الجامعة الافتراضية السورية — المصادر، المتطلبات المسبقة ومجموعات التواصل</p>
+        
+        <div class="header-links">
+            <a href="https://t.me/+Dv_LH2j6kqQwMDRk" target="_blank" class="social-btn telegram">
+                <span>📢 قناة التلغرام وبنك الأسئلة</span>
+            </a>
+            <a href="https://chat.whatsapp.com/GKjDE1xOY948lsFJdD41gZ" target="_blank" class="social-btn whatsapp-channel">
+                <span>💬 كروب التحديثات والقرارات العاجلة</span>
+            </a>
+        </div>
+
+        <!-- شريط البحث السريع -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن اسم مادة أو ترميزها (مثال: BPG401)...">
+        </div>
+    </header>
+
+    <!-- 2. أزرار التنقل بين السنوات -->
+    <div class="tabs-wrapper">
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchYear(1)">السنة الأولى</button>
+            <button class="tab-btn" onclick="switchYear(2)">السنة الثانية</button>
+            <button class="tab-btn" onclick="switchYear(3)">السنة الثالثة</button>
+            <button class="tab-btn" onclick="switchYear(4)">السنة الرابعة</button>
+            <button class="tab-btn" onclick="switchYear(5)">السنة الخامسة</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+        <!-- ==================== السنة الأولى ==================== -->
+        <div id="year-1" class="year-content active">
+            
+            <!-- الفصل الأول -->
+            <h2 class="semester-title">📘 الفصل الأول</h2>
+            <div class="grid-cards">
+
+                <div class="course-card" data-name="برمجة 1 BPG401">
+                    <div class="course-header">
+                        <div class="course-name">برمجة 1</div>
+                        <span class="course-code">BPG401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/J6fPBINf4cjCsslTNh3uZ7" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="التحليل الرياضي 1 BMA401">
+                    <div class="course-header">
+                        <div class="course-name">التحليل الرياضي 1</div>
+                        <span class="course-code">BMA401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/GTp9jhHofMYCnRoHnayFdX" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="الفيزياء BPH401">
+                    <div class="course-header">
+                        <div class="course-name">الفيزياء</div>
+                        <span class="course-code">BPH401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/LRnGV9RgC3SEtGRShvxmXI" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="بنى جبرية BAS401">
+                    <div class="course-header">
+                        <div class="course-name">بنى جبرية</div>
+                        <span class="course-code">BAS401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/BRfGwyIWVMq6D1MpFvebCk" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="مهارات الحاسوب GCS301">
+                    <div class="course-header">
+                        <div class="course-name">مهارات الحاسوب</div>
+                        <span class="course-code">GCS301</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/D00WmT6QuGS97dgLcYvkDU" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="مدخل إلى التعليم الإلكتروني GOE301">
+                    <div class="course-header">
+                        <div class="course-name">مدخل إلى التعليم الإلكتروني</div>
+                        <span class="course-code">GOE301</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <a href="https://chat.whatsapp.com/JQwJ3F4LDYbBmpxFLvCmxM" target="_blank" class="btn-wa active">💬 مجموعة الواتساب</a>
+                </div>
+
+                <div class="course-card" data-name="اللغة الإنكليزية 1 GEN301">
+                    <div class="course-header">
+                        <div class="course-name">اللغة الإنكليزية 1</div>
+                        <span class="course-code">GEN301</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 3 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: لا يوجد</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+            </div>
+
+            <!-- الفصل الثاني -->
+            <h2 class="semester-title">📙 الفصل الثاني</h2>
+            <div class="grid-cards">
+
+                <div class="course-card" data-name="مهارات التواصل والكتابة العلمية GTW301">
+                    <div class="course-header">
+                        <div class="course-name">مهارات التواصل والكتابة العلمية</div>
+                        <span class="course-code">GTW301</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: مهارات الحاسوب GCS301</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الجبر الخطي BLA401">
+                    <div class="course-header">
+                        <div class="course-name">الجبر الخطي</div>
+                        <span class="course-code">BLA401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: التحليل الرياضي 1 BMA401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="التحليل الرياضي 2 BMA402">
+                    <div class="course-header">
+                        <div class="course-name">التحليل الرياضي 2</div>
+                        <span class="course-code">BMA402</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: التحليل الرياضي 1 BMA401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الدارات الإلكترونية BEC401">
+                    <div class="course-header">
+                        <div class="course-name">الدارات الإلكترونية</div>
+                        <span class="course-code">BEC401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: الفيزياء BPH401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الدارات المنطقية BLC401">
+                    <div class="course-header">
+                        <div class="course-name">الدارات المنطقية</div>
+                        <span class="course-code">BLC401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: بنى جبرية BAS401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="برمجة 2 BPG402">
+                    <div class="course-header">
+                        <div class="course-name">برمجة 2</div>
+                        <span class="course-code">BPG402</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة 1 BPG401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="اللغة الإنكليزية 2 GEN401">
+                    <div class="course-header">
+                        <div class="course-name">اللغة الإنكليزية 2</div>
+                        <span class="course-code">GEN401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 3 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: اللغة الإنكليزية 1 GEN301</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================== السنة الثانية ==================== -->
+        <div id="year-2" class="year-content">
+            
+            <h2 class="semester-title">📘 الفصل الأول</h2>
+            <div class="grid-cards">
+                <div class="course-card" data-name="تحليل عددي BNA401">
+                    <div class="course-header">
+                        <div class="course-name">تحليل عددي</div>
+                        <span class="course-code">BNA401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BMA402 + BLA401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="برمجة ويب 1 BWP401">
+                    <div class="course-header">
+                        <div class="course-name">برمجة ويب 1</div>
+                        <span class="course-code">BWP401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة 2 BPG402</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="بنيان الحاسوب 1 BCA501">
+                    <div class="course-header">
+                        <div class="course-name">بنيان الحاسوب 1</div>
+                        <span class="course-code">BCA501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: الدارات المنطقية BLC401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="معالجة الإشارة BSP501">
+                    <div class="course-header">
+                        <div class="course-name">معالجة الإشارة</div>
+                        <span class="course-code">BSP501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: التحليل الرياضي 2 BMA402</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="بنى المعطيات والخوارزميات 1 BDA501">
+                    <div class="course-header">
+                        <div class="course-name">بنى المعطيات والخوارزميات 1</div>
+                        <span class="course-code">BDA501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة 2 BPG402</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="اللغة الإنكليزية 3 GEN501">
+                    <div class="course-header">
+                        <div class="course-name">اللغة الإنكليزية 3</div>
+                        <span class="course-code">GEN501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 3 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: اللغة الإنكليزية 2 GEN401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+            </div>
+
+            <h2 class="semester-title">📙 الفصل الثاني</h2>
+            <div class="grid-cards">
+                <div class="course-card" data-name="أساسيات الإدارة GMN401">
+                    <div class="course-header">
+                        <div class="course-name">أساسيات الإدارة</div>
+                        <span class="course-code">GMN401</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: تحليل عددي BNA401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الرياضيات المتقطعة BDM501">
+                    <div class="course-header">
+                        <div class="course-name">الرياضيات المتقطعة</div>
+                        <span class="course-code">BDM501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: الدارات المنطقية BLC401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="نظم الاتصالات BT5501">
+                    <div class="course-header">
+                        <div class="course-name">نظم الاتصالات</div>
+                        <span class="course-code">BT5501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BMA402 + BLC401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="نظم قواعد البيانات 1 BDB501">
+                    <div class="course-header">
+                        <div class="course-name">نظم قواعد البيانات 1</div>
+                        <span class="course-code">BDB501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: بنى المعطيات 1 BDA501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="مخبر نظم قواعد البيانات 1 BDBL501">
+                    <div class="course-header">
+                        <div class="course-name">مخبر نظم قواعد البيانات 1</div>
+                        <span class="course-code">BDBL501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: على التوازي مع BDB501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="برمجة ويب 2 BWP501">
+                    <div class="course-header">
+                        <div class="course-name">برمجة ويب 2</div>
+                        <span class="course-code">BWP501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة ويب 1 BWP401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="اللغة الإنكليزية 4 GEN502">
+                    <div class="course-header">
+                        <div class="course-name">اللغة الإنكليزية 4</div>
+                        <span class="course-code">GEN502</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 3 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: اللغة الإنكليزية 3 GEN501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== السنة الثالثة ==================== -->
+        <div id="year-3" class="year-content">
+            
+            <h2 class="semester-title">📘 الفصل الأول</h2>
+            <div class="grid-cards">
+                <div class="course-card" data-name="المحاسبة GAC501">
+                    <div class="course-header">
+                        <div class="course-name">المحاسبة</div>
+                        <span class="course-code">GAC501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: أساسيات الإدارة GMN401</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الاحتمالات والإحصاء BPS601">
+                    <div class="course-header">
+                        <div class="course-name">الاحتمالات والإحصاء</div>
+                        <span class="course-code">BPS601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BMA402 + BDM501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="نظم التشغيل 1 BOS501">
+                    <div class="course-header">
+                        <div class="course-name">نظم التشغيل 1</div>
+                        <span class="course-code">BOS501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BCA501 + BPG402</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="مخبر نظم التشغيل 1 BOSL501">
+                    <div class="course-header">
+                        <div class="course-name">مخبر نظم التشغيل 1</div>
+                        <span class="course-code">BOSL501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 4 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: على التوازي مع BOS501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="أوتومات ولغات صورية BAU501">
+                    <div class="course-header">
+                        <div class="course-name">أوتومات ولغات صورية</div>
+                        <span class="course-code">BAU501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BDA501 + BDM501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="برمجة 3 BPG601">
+                    <div class="course-header">
+                        <div class="course-name">برمجة 3</div>
+                        <span class="course-code">BPG601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 5 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة 2 BPG402</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="اللغة الإنكليزية 5 GEN601">
+                    <div class="course-header">
+                        <div class="course-name">اللغة الإنكليزية 5</div>
+                        <span class="course-code">GEN601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 3 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: اللغة الإنكليزية 4 GEN502</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+            </div>
+
+            <h2 class="semester-title">📙 الفصل الثاني</h2>
+            <div class="grid-cards">
+                <div class="course-card" data-name="الذكاء الصنعي BAI501">
+                    <div class="course-header">
+                        <div class="course-name">الذكاء الصنعي</div>
+                        <span class="course-code">BAI501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: بنى المعطيات 1 BDA501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="الشبكات الحاسوبية 1 BNT501">
+                    <div class="course-header">
+                        <div class="course-name">الشبكات الحاسوبية 1</div>
+                        <span class="course-code">BNT501</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: نظم الاتصالات BT5501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="هندسة البرمجيات 1 BSE601">
+                    <div class="course-header">
+                        <div class="course-name">هندسة البرمجيات 1</div>
+                        <span class="course-code">BSE601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: برمجة 3 BPG601</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="المترجمات BCM601">
+                    <div class="course-header">
+                        <div class="course-name">المترجمات</div>
+                        <span class="course-code">BCM601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: أوتومات ولغات صورية BAU501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+
+                <div class="course-card" data-name="البيانيات BCG601">
+                    <div class="course-header">
+                        <div class="course-name">البيانيات</div>
+                        <span class="course-code">BCG601</span>
+                    </div>
+                    <div class="badges-container">
+                        <span class="badge badge-hours">⏱️ 6 ساعات</span>
+                        <span class="badge badge-prereq">🔗 الأسبقية: BSP501 + BDA501</span>
+                    </div>
+                    <button class="btn-wa disabled" disabled>⏳ قريباً</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== السنة الرابعة ==================== -->
+        <div id="year-4" class="year-content">
+            <div class="empty-year">
+                <h3>🚀 المواد والمجموعات قيد التجهيز</h3>
+                <p>سيتم إضافة خطة السنة الرابعة فور تفعيل مجموعاتها.</p>
+            </div>
+        </div>
+
+        <!-- ==================== السنة الخامسة ==================== -->
+        <div id="year-5" class="year-content">
+            <div class="empty-year">
+                <h3>🎓 مشاريع التخرج ومواد السنة الخامسة</h3>
+                <p>سيتم إضافة التفاصيل والمجموعات قريباً.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 دليل الهندسة المعلوماتية SVU — عالم الافتراضية</p>
+    </footer>
+
+    <script>
+        function switchYear(yearNum) {
+            const years = document.querySelectorAll('.year-content');
+            years.forEach(y => y.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            document.getElementById(`year-${yearNum}`).classList.add('active');
+            tabs[yearNum - 1].classList.add('active');
+
+            document.getElementById('searchInput').value = '';
+            filterCourses('');
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function(e) {
+            filterCourses(e.target.value.toLowerCase().trim());
+        });
+
+        function filterCourses(query) {
+            const cards = document.querySelectorAll('.course-card');
+            cards.forEach(card => {
+                const courseData = card.getAttribute('data-name').toLowerCase();
+                if (courseData.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
