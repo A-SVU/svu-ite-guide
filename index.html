@@ -40,42 +40,48 @@
         header {
             background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
             border-bottom: 1px solid var(--card-border);
-            padding: 2.5rem 1rem 2rem 1rem;
+            padding: 2rem 0.75rem 1.5rem 0.75rem;
             text-align: center;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .header-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             background: linear-gradient(to right, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        @media (min-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+        }
+
         .header-subtitle {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         /* شريط البحث */
         .search-container {
             max-width: 600px;
-            margin: 1.5rem auto 0 auto;
-            padding: 0 1rem;
+            margin: 1rem auto 0 auto;
+            padding: 0 0.5rem;
         }
 
         .search-input {
             width: 100%;
-            padding: 0.85rem 1.2rem;
+            padding: 0.75rem 1rem;
             border-radius: 12px;
             border: 1px solid var(--card-border);
             background-color: var(--card-bg);
             color: var(--text-primary);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
@@ -89,37 +95,53 @@
         .hero-links-section {
             background: linear-gradient(135deg, rgba(30, 27, 75, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin: 1.5rem auto 2rem auto;
+            border-radius: 16px;
+            padding: 1rem 0.5rem;
+            margin: 1.25rem auto 1.5rem auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (min-width: 768px) {
+            .hero-links-section {
+                border-radius: 20px;
+                padding: 1.5rem;
+                margin: 1.5rem auto 2rem auto;
+            }
         }
 
         .hero-links-title {
             text-align: center;
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-weight: 800;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
             color: var(--text-primary);
         }
 
+        @media (min-width: 768px) {
+            .hero-links-title {
+                font-size: 1.15rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        /* عرض الكروت 3 جنب بعض الموبايل والكمبيوتر */
         .hero-links-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4rem;
         }
 
         @media (min-width: 768px) {
             .hero-links-grid {
-                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
             }
         }
 
         .hero-link-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 1.25rem;
+            border-radius: 10px;
+            padding: 0.65rem 0.35rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -128,61 +150,104 @@
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
+        @media (min-width: 768px) {
+            .hero-link-card {
+                border-radius: 14px;
+                padding: 1.25rem;
+            }
+        }
+
         .hero-link-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: rgba(59, 130, 246, 0.5);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-card-icon {
+                font-size: 2.2rem;
+                margin-bottom: 0.5rem;
+            }
         }
 
         .hero-card-title {
-            font-size: 1rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.25;
+        }
+
+        @media (min-width: 768px) {
+            .hero-card-title {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
         }
 
         .hero-card-desc {
-            font-size: 0.82rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .hero-card-desc {
+                font-size: 0.82rem;
+                margin-bottom: 1.2rem;
+                line-height: 1.5;
+            }
         }
 
         .hero-btn {
             width: 100%;
-            padding: 0.65rem 1rem;
-            border-radius: 10px;
+            padding: 0.4rem 0.2rem;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.7rem;
             text-decoration: none;
             color: #fff;
             text-align: center;
             transition: filter 0.2s, transform 0.2s;
+            border: none;
+            display: inline-block;
         }
 
-        .hero-btn:hover {
+        @media (min-width: 768px) {
+            .hero-btn {
+                padding: 0.65rem 1rem;
+                border-radius: 10px;
+                font-size: 0.88rem;
+            }
+        }
+
+        .hero-btn:hover:not(.disabled) {
             filter: brightness(1.15);
-        }
-
-        .hero-btn.telegram {
-            background-color: var(--telegram-color);
-            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.25);
-        }
-
-        .hero-btn.wa-main {
-            background-color: #128c7e;
-            box-shadow: 0 4px 12px rgba(18, 140, 126, 0.25);
         }
 
         .hero-btn.wa-news {
             background-color: var(--whatsapp-color);
             color: #000;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
+        }
+
+        .hero-btn.wa-main {
+            background-color: #128c7e;
+            box-shadow: 0 2px 8px rgba(18, 140, 126, 0.2);
+        }
+
+        .hero-btn.disabled {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            box-shadow: none;
         }
 
         /* 2. تبويبات السنوات (Year Tabs) */
@@ -193,15 +258,15 @@
             background-color: rgba(15, 23, 42, 0.92);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--card-border);
-            padding: 0.75rem 0;
-            margin-bottom: 1.5rem;
+            padding: 0.6rem 0;
+            margin-bottom: 1.25rem;
         }
 
         .tabs-container {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             overflow-x: auto;
-            padding: 0 1rem;
+            padding: 0 0.75rem;
             max-width: 1100px;
             margin: 0 auto;
             scrollbar-width: none;
@@ -216,13 +281,21 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             color: var(--text-secondary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             cursor: pointer;
             transition: all 0.2s;
             flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .tab-btn {
+                padding: 0.6rem 1.2rem;
+                border-radius: 10px;
+                font-size: 0.9rem;
+            }
         }
 
         .tab-btn.active {
@@ -236,20 +309,28 @@
         .semester-tabs-container {
             display: flex;
             justify-content: center;
-            gap: 0.75rem;
-            margin: 0.5rem 0 1.5rem 0;
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem 0;
         }
 
         .sem-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--card-border);
             color: var(--text-secondary);
-            padding: 0.55rem 1.4rem;
-            border-radius: 25px;
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             cursor: pointer;
             transition: all 0.25s ease;
+        }
+
+        @media (min-width: 768px) {
+            .sem-btn {
+                padding: 0.55rem 1.4rem;
+                border-radius: 25px;
+                font-size: 0.9rem;
+            }
         }
 
         .sem-btn:hover {
@@ -268,7 +349,7 @@
         .main-container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 0.75rem;
         }
 
         .year-content {
@@ -303,7 +384,7 @@
         .grid-cards {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 0.85rem;
         }
 
         @media (min-width: 640px) {
@@ -322,8 +403,8 @@
         .course-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.25rem;
+            border-radius: 14px;
+            padding: 1.1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -336,18 +417,18 @@
         }
 
         .course-header {
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .course-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.15rem;
         }
 
         .course-code {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #a78bfa;
             font-weight: 600;
             direction: ltr;
@@ -357,16 +438,16 @@
         .badges-container {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            padding: 0.3rem 0.7rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
             font-weight: 600;
             width: fit-content;
         }
@@ -388,12 +469,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             width: 100%;
-            padding: 0.65rem;
-            border-radius: 10px;
+            padding: 0.6rem;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             text-decoration: none;
             transition: all 0.2s;
             border: none;
@@ -419,42 +500,40 @@
 
         .empty-year {
             text-align: center;
-            padding: 3.5rem 1rem;
+            padding: 3rem 1rem;
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px dashed var(--card-border);
-            margin-top: 1rem;
+            margin-top: 0.85rem;
         }
 
         .empty-year h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .empty-year p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* البطاقة التوضيحية الأنيقة قبل الهوتر */
         .continuous-update-banner {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
             border: 1px dashed rgba(96, 165, 250, 0.35);
-            border-radius: 18px;
-            padding: 1.25rem 1.75rem;
-            margin: 3rem auto 1.5rem auto;
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            margin: 2.5rem auto 1.25rem auto;
             max-width: 900px;
             text-align: center;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            position: relative;
-            overflow: hidden;
         }
 
         .continuous-update-banner p {
-            font-size: 0.93rem;
+            font-size: 0.88rem;
             color: #e2e8f0;
-            line-height: 1.7;
+            line-height: 1.65;
             font-weight: 600;
         }
 
@@ -465,11 +544,11 @@
 
         footer {
             text-align: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -496,19 +575,19 @@
             
             <div class="hero-links-grid">
                 
-                <!-- 1. قناة التلغرام وبنك الأسئلة -->
+                <!-- 1. قناة التحديثات والقرارات العاجلة (الأولى) -->
                 <div class="hero-link-card">
                     <div>
-                        <div class="hero-card-icon">📢</div>
-                        <div class="hero-card-title">قناة التلغرام وبنك الأسئلة</div>
-                        <div class="hero-card-desc">الملفات، الملخصات، وبنك الأسئلة الامتحانية الشاملة لكافة المواد</div>
+                        <div class="hero-card-icon">💬</div>
+                        <div class="hero-card-title">قناة التحديثات والقرارات العاجلة (واتساب)</div>
+                        <div class="hero-card-desc">🔒 جروب مغلق لرسائل الآدمن فقط: لمتابعة قرارات الجامعة الفورية، طلب المساعدة الأكاديمية، ومساعدة في تنسيق شركاء الوظائف</div>
                     </div>
-                    <a href="https://t.me/+Dv_LH2j6kqQwMDRk" target="_blank" class="hero-btn telegram">
-                        الانضمام للتلغرام ↵
+                    <a href="https://chat.whatsapp.com/GKjDE1xOY948lsFJdD41gZ" target="_blank" class="hero-btn wa-news">
+                        متابعة التحديثات ↵
                     </a>
                 </div>
 
-                <!-- 2. الكروب العام المباشر -->
+                <!-- 2. الكروب العام لطلاب ITE (الثانية) -->
                 <div class="hero-link-card">
                     <div>
                         <div class="hero-card-icon">👥</div>
@@ -520,16 +599,16 @@
                     </a>
                 </div>
 
-                <!-- 3. قناة التحديثات والقرارات العاجلة -->
+                <!-- 3. قناة التلغرام وبنك الأسئلة (الثالثة - قريباً) -->
                 <div class="hero-link-card">
                     <div>
-                        <div class="hero-card-icon">💬</div>
-                        <div class="hero-card-title">قناة التحديثات والقرارات العاجلة (واتساب)</div>
-                        <div class="hero-card-desc">🔒 جروب مغلق لرسائل الآدمن فقط: لمتابعة قرارات الجامعة الفورية، طلب المساعدة الأكاديمية، ومساعدة في تنسيق شركاء الوظائف</div>
+                        <div class="hero-card-icon">📢</div>
+                        <div class="hero-card-title">قناة التلغرام وبنك الأسئلة</div>
+                        <div class="hero-card-desc">الملفات، الملخصات، وبنك الأسئلة الامتحانية الشاملة لكافة المواد</div>
                     </div>
-                    <a href="https://chat.whatsapp.com/GKjDE1xOY948lsFJdD41gZ" target="_blank" class="hero-btn wa-news">
-                        متابعة التحديثات ↵
-                    </a>
+                    <button class="hero-btn disabled" disabled>
+                        ⏳ قريباً
+                    </button>
                 </div>
 
             </div>
